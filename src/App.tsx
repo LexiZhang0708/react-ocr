@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { createWorker, createScheduler } from 'tesseract.js';
 
@@ -16,7 +15,6 @@ const useTakeWebcamStream = ({video}: {video: HTMLVideoElement | null}) => {
           video: true
         }).then(handleSuccess);
     }
-
   }, [video])
 }
 
@@ -43,7 +41,6 @@ const doOCR = async (canvas: HTMLCanvasElement): Promise<string> => {
 
 // TODO: use video height and width for snapshot
 function App() {
-
   const [videoRef, setVideoRef] = useState<HTMLVideoElement | null>(null);
   const [snapShotRef, setSnapShotRef] = useState<HTMLCanvasElement | null>(null);
   const [results, setResults] = useState<string>("");
