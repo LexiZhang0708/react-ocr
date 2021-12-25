@@ -36,7 +36,7 @@ const doOCR = async (canvas: HTMLCanvasElement): Promise<string> => {
 };
 
 // TODO: use video height and width for snapshot
-function App() {
+function TextRecognizer({onChange}: {onChange: (recognizedText: string) => unknown}) {
     const [videoRef, setVideoRef] = useState<HTMLVideoElement | null>(null);
     const [snapShotRef, setSnapShotRef] = useState<HTMLCanvasElement | null>(null);
     const [results, setResults] = useState<string>("");
@@ -48,7 +48,10 @@ function App() {
                 if (videoRef && snapShotRef) {
                     // @ts-ignore
                     snapShotRef.getContext("2d").drawImage(videoRef, 0, 0, 320, 240)
-                    doOCR(snapShotRef).then(setResults);
+                    doOCR(snapShotRef).then((recognizedText) => {
+                        setResults(recognizedText);
+                        onChange(recognizedText);
+                    });
                 }
             }}>
                 Capture Image
@@ -64,4 +67,4 @@ function App() {
     );
 }
 
-export default App;
+export default TextRecognizer;

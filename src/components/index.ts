@@ -1,5 +1,5 @@
-import App from "./App";
+import TextRecognizer from "./TextRecognizer";
 
 export {
-    App
+    TextRecognizer
 }

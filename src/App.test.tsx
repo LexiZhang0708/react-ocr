@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from "./components/App";
+import TextRecognizer from "./components/TextRecognizer";
 
 test('renders learn react link', () => {
-  render(<App />);
+  render(<textRecognizer />);
   const linkElement = screen.getByText(/learn react/i);
   expect(linkElement).toBeInTheDocument();
 });
