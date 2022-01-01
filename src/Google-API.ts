@@ -9,14 +9,14 @@ async function doGoogleOcr(fileName: string){
     /**
      * TODO(developer): Uncomment the following line before running the sample.
      */
-    let recognized_text: google.cloud.vision.v1.IEntityAnnotation[] = []
+    let recognized_text: string[] = []
     // Performs text detection on the local file
     const [result] = await client.textDetection(fileName);
     const detections = result.textAnnotations;
     console.log('Text:');
     if (detections) {
         detections.forEach((text: google.cloud.vision.v1.IEntityAnnotation) => console.log(text));
-        detections.forEach((text: google.cloud.vision.v1.IEntityAnnotation) => recognized_text.push(text));
+        detections.forEach((text: google.cloud.vision.v1.IEntityAnnotation) => recognized_text.push(text.description!));
     }
     return recognized_text;
 }
