@@ -2,14 +2,13 @@ import {google} from "@google-cloud/vision/build/protos/protos";
 
 const vision = require('@google-cloud/vision');
 
-async function doGoogleOcr(){
+async function doGoogleOcr(fileName: string){
     // Creates a client
     const client = new vision.ImageAnnotatorClient();
 
     /**
      * TODO(developer): Uncomment the following line before running the sample.
      */
-    const fileName = '/Users/xizhang/Desktop/Chinese.jpg';
     let recognized_text: google.cloud.vision.v1.IEntityAnnotation[] = []
     // Performs text detection on the local file
     const [result] = await client.textDetection(fileName);
@@ -22,7 +21,6 @@ async function doGoogleOcr(){
     return recognized_text;
 }
 
-doGoogleOcr()
-
+export default doGoogleOcr;
 
 console.log()
